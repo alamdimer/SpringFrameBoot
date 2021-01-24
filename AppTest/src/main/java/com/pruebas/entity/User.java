@@ -42,68 +42,57 @@ public class User implements Serializable{
 	@Column
 	private String password;
 
-	@Transient //Transient es que la propiedad no se puede mapear por la puperclase
+	@Transient 											//Transient es que la propiedad no se puede mapear por la puperclase
 	private String confirmPassword;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_roles",
-	joinColumns=@JoinColumn(name="user_id"),
-	inverseJoinColumns = @JoinColumn(name="role_id"))
+		@JoinTable(name = "user_roles",
+		joinColumns=@JoinColumn(name="user_id"),
+		inverseJoinColumns = @JoinColumn(name="role_id"))
 	private Set<Role> roles;//SET NO REPITE VALORES
-
-
-	public User() {
-		super();
-	}
 	
-	public User(long id) {
-		super();
+
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	
 
-	public long getId() {
-		return id;	
-	}
-	
-	
-	public void setId(long id) {
-		this.id = id;	
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
-	
-	public void setFirstName( String firstName) {
+
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
-	
-	public String getLastName(){
+
+	public String getLastName() {
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName) {
-	this.lastName = lastName;
+		this.lastName = lastName;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
- 
+
 	public String getUsername() {
-	return username;	
+		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
-		}
-	
+	}
+
 	public String getPassword() {
 		return password;
 	}
